@@ -7,7 +7,8 @@ export default {
     ],
     theme: {
         fontFamily: {
-            poppins: ["poppins", "ui-sans-serif", "system-ui", "sans-serif"],
+            poppins: ["Poppins", "ui-sans-serif", "system-ui", "sans-serif"],
+            fraunces: ["Fraunces", "serif"],
         },
         extend: {
             colors: {
@@ -20,7 +21,16 @@ export default {
                 outline: "#353147",
                 secondary: "#7E7997",
             },
+            animation: {
+                scroll: "scroll 10s linear infinite",
+            },
+            keyframes: {
+                scroll: {
+                    "0%": { transform: "translateX(0)" },
+                    "100%": { transform: "translateX(-100%)" },
+                },
+            },
         },
+        plugins: [],
     },
-    plugins: [],
 };

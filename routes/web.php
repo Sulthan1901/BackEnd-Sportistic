@@ -18,12 +18,10 @@ Route::get('/home', function () {
   return view('welcome');
 });
 
+Route::get('/komunitas', [PageController::class, 'tampilKomunitas'])->name('komunitas.tampil');
+
+
 // route untuk tampil registrasi dari controller
 Route::get('/registrasi', [Sesicontroller::class, 'tampilRegistrasi'])->name('registrasi.tampil');
 // route untuk mengpost data yang sudah disubmit
 Route::post('/registrasi/submit', [Sesicontroller::class, 'submitRegistrasi'])->name('registrasi.submit');
-
-
-
-// route untuk pagecontroller
-// Route::get('/landingPage', [PageController::class, 'index']);

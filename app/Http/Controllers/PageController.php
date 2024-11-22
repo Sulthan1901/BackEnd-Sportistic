@@ -11,4 +11,9 @@ class PageController extends Controller
     {
         return view('landingPage');
     }
+
+    function tampilKomunitas()
+    {
+        return view('komunitas');
+    }
 }
