@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sportistic</title>
+    <title>Sportistic - Sign Up</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet" />
@@ -24,39 +25,25 @@
                 <div class="logo-wrap text-center mb-8">
                     <img src="{{ asset('assets/logo.png') }}" alt="Sportistic Logo" class="mx-auto mb-4" width="200"
                         height="50" />
-                    <h2 class="button text-4xl  font-bold ">SIGN UP</h2>
-                    <p class="">Welcome back! Please enter your details.</p>
+                    <h2 class="text-4xl font-bold">SIGN UP</h2>
+                    <p>Welcome! Please enter your details below.</p>
                 </div>
-                {{-- pengecekan harus mengisi username, email dan password --}}
-                @if (
-                    $errors->has('email') ||
-                        $errors->has('nama') ||
-                        $errors->has('password') ||
-                        $errors->has('confirm_pasword') ||
-                        $errors->has('login'))
-                    <div class="text-red-500 text-sm">
-
-                        @if ($errors->has('login'))
-                            <ul>
-                                <li>{{ $errors->first('login') }}</li>
-                            </ul>
-                        @endif
-                    </div>
-                @endif
+                <!-- Form -->
                 <form action="{{ route('registrasi.submit') }}" method="POST">
                     @csrf
                     <div class="mb-4">
-                        <label for="username" class="block  mb-2">Username</label>
-                        <input type="text" value="{{ old('name') }}" name="name"
+                        <label for="username" class="block mb-2">Username</label>
+                        <input type="text" value="{{ old('username') }}" name="username" id="username"
                             placeholder="Enter your username"
                             class="w-full px-4 py-2 text-light bg-theme border rounded-lg focus:outline-none focus:border-gray-500" />
-                        @error('name')
+                        @error('username')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-4">
-                        <label for="email" class="block  mb-2">Email</label>
-                        <input type="email" value="{{ old('email') }}" name="email" placeholder="Enter your email"
+                        <label for="email" class="block mb-2">Email</label>
+                        <input type="email" value="{{ old('email') }}" name="email" id="email"
+                            placeholder="Enter your email"
                             class="w-full px-4 py-2 text-light bg-theme border rounded-lg focus:outline-none focus:border-gray-500" />
                         @error('email')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -64,15 +51,15 @@
                     </div>
                     <div class="mb-4">
                         <label for="password" class="block mb-2">Password</label>
-                        <input type="password" name="password" placeholder="********"
+                        <input type="password" name="password" id="password" placeholder="********"
                             class="w-full px-4 py-2 text-light bg-theme border rounded-lg focus:outline-none focus:border-gray-500" />
                         @error('password')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-6">
-                        <label for="confirm-password" class="block  mb-2">Confirm Password</label>
-                        <input type="password" name="confirm_password" placeholder="********"
+                        <label for="confirm_password" class="block mb-2">Confirm Password</label>
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="********"
                             class="w-full px-4 py-2 text-light bg-theme border rounded-lg focus:outline-none focus:border-gray-500" />
                         @error('confirm_password')
                             <span class="text-red-500 text-sm">{{ $message }}</span>
@@ -86,7 +73,7 @@
                     </div>
                     <div class="mb-4">
                         <button type="button"
-                            class="w-full py-2 bg-theme font-bold rounded-lg flex items-center border justify-center hover:bg-yellow-600 ">
+                            class="w-full py-2 bg-theme font-bold rounded-lg flex items-center border justify-center hover:bg-yellow-600">
                             <img src="{{ asset('assets/icons/google.png') }}" alt="Google Logo" class="w-5 h-5 mr-2" />
                             Sign up with Google
                         </button>
@@ -94,7 +81,7 @@
                     <div class="text-center">
                         <p class="text-secondary">
                             Already have an account?
-                            <a href="#" class="text-light">Sign in now!</a>
+                            <a href="{{ route('login.tampil') }}" class="text-light">Sign in now!</a>
                         </p>
                     </div>
                 </form>

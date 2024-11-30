@@ -15,13 +15,29 @@ Route::get('/login', [SesiController::class, 'tampilLogin'])->name('login.tampil
 Route::post('/login/submit', [Sesicontroller::class, 'submitLogin'])->name('login.submit');
 
 Route::get('/home', function () {
-  return view('welcome');
+  return view('overview');
+});
+Route::get('/community', function () {
+  return view('community');
+});
+Route::get('/add_community', function () {
+  return view('add_community');
 });
 
-Route::get('/komunitas', [PageController::class, 'tampilKomunitas'])->name('komunitas.tampil');
+Route::get('/logout', [Sesicontroller::class, 'logout'])->name('logout');
+
+Route::get('/profile', function () {
+  // Halaman profil pengguna, ganti sesuai kebutuhan
+  return view('profile');
+})->name('profile');
+Route::post('/profile/update', [Sesicontroller::class, 'updateUser'])->name('profile.update');
+
 
 
 // route untuk tampil registrasi dari controller
 Route::get('/registrasi', [Sesicontroller::class, 'tampilRegistrasi'])->name('registrasi.tampil');
 // route untuk mengpost data yang sudah disubmit
 Route::post('/registrasi/submit', [Sesicontroller::class, 'submitRegistrasi'])->name('registrasi.submit');
+
+Route::get('/logout', [Sesicontroller::class, 'logout'])->name('logout');
+Route::post('/update-profile', [Sesicontroller::class, 'updateUser'])->name('profile.update');
